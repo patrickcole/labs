@@ -5,7 +5,9 @@
     </head>
     <body>
 
-        <button id="sampleButton">Sample</button>
+        <button id="sampleButton">Get Colors JSON</button>
+        <span id="responseMessage"></span>
+        <p>The exercises &amp; tests inside this lab are mainly sourced from: <a href="https://developer.telerik.com/content-types/tutorials/im-not-using-jquery/" target="_blank" rel="noreferrer"><cite>https://developer.telerik.com/content-types/tutorials/im-not-using-jquery/</cite></a></p>
         <script>
 
             document.addEventListener("DOMContentLoaded", function(){
@@ -16,8 +18,21 @@
             let sampleButton_el = document.querySelector('#sampleButton');
             sampleButton_el.addEventListener("click", function(){
 
-                alert("Sample button clicked");
+                getColors();
             }, false);
+
+            let responseMessage_el = document.querySelector('#responseMessage');
+            function getColors(){
+
+                fetch('https://raw.githubusercontent.com/bahamas10/css-color-names/master/css-color-names.json')
+                .then( res => res.json() )
+                .then( res => {
+
+                    console.log( res );
+                    responseMessage_el.innerHTML = "Check Console for JSON Response";
+                });
+            }
+            
         </script>
     </body>
 </html>
