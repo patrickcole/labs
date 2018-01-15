@@ -3,6 +3,7 @@
     // Note: A majority of the examples of this script are now
     // considered out-of-date for PHP7+.
 
+    // Update for testing:
     class DB {
 
         public static function ping(){
