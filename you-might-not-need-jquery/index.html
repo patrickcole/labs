@@ -5,9 +5,19 @@
     </head>
     <body>
 
+        <button id="sampleButton">Sample</button>
         <script>
 
-            
+            document.addEventListener("DOMContentLoaded", function(){
+
+                alert("Document is ready");
+            }, false);
+
+            let sampleButton_el = document.querySelector('#sampleButton');
+            sampleButton_el.addEventListener("click", function(){
+
+                alert("Sample button clicked");
+            }, false);
         </script>
     </body>
 </html>
