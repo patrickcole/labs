@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Web Audio API</title>
+    </head>
+    <body>
+
+        <script>
+            let audioContext;
+
+            try {
+
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            } catch ( error ){
+
+                window.alert(`Sorry, but your browser doesn't support the Web Audio API!`);
+            }
+
+            if ( audioContext !== undefined ){
+
+                const oscillator = audioContext.createOscillator();
+                oscillator.type = 'triangle';
+                oscillator.connect( audioContext.destination );
+                oscillator.start();
+                oscillator.frequency.exponentialRampToValueAtTime( 800, audioContext.currentTime + 1 );
+                oscillator.frequency.exponentialRampToValueAtTime( 200, audioContext.currentTime + 2 );
+                oscillator.frequency.exponentialRampToValueAtTime( 800, audioContext.currentTime + 3 );
+                oscillator.stop( audioContext.currentTime + 4 );
+            }
+        </script>
+    </body>
+</html>
