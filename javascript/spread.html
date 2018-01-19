@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>JS Spread Operator</title>
+    </head>
+    <body>
+
+        <script>
+
+            const cat = { legs: 4, sound: 'meow' };
+
+            // object spread copy:
+            const dog = { ...cat, sound: 'woof' };
+
+            console.log(dog);
+
+            const person = { name: 'Dave', surname: 'Bowman' };
+            const keys = Object.keys(person);
+            console.log(keys);
+
+            Object.defineProperty(person, 'age', {
+
+                enumerable: false,
+                value: 25
+            });
+
+            console.log(person['age']);
+
+            const clone = { ...person };
+
+            console.log( clone );
+
+            const personB = Object.create(person, {
+                
+                profession: {
+
+                    value: 'Astronaut',
+                    enumerable: true
+                }
+            });
+
+            console.log( personB.hasOwnProperty('profession') );
+            console.log( personB.hasOwnProperty('name') );
+            console.log( personB.hasOwnProperty('surname') );
+
+            const cloneB = { ...personB };
+            console.log( cloneB );
+        </script>
+    </body>
+</html>
